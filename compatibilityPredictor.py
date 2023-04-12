@@ -8,6 +8,7 @@ import json #For reading and writing .json files
 with open('input.json', encoding='utf-8') as f:
     file_contents = json.load(f)
 
+MAX_SCORE = 10
 
 #Categorizing necessary members (both team and applicant attributes as well as the applicant names)
 team_attributes = [member['attributes'] for member in file_contents['team']]
@@ -16,7 +17,7 @@ applicant_names = [member['name'] for member in file_contents['applicants']]
 
 
 #Determine which attributes within the team has the lowest values and put them into min_attributes[]
-min_value = 10
+min_value = MAX_SCORE
 min_attributes = []
 for attribute in team_attributes[0]:
     values = [member[attribute] for member in team_attributes]
@@ -46,7 +47,7 @@ output_dict = []
 for i, applicant in enumerate(applicant_attributes):
     scores = []
     for attribute in min_attributes:
-        score = applicant[attribute] / 10
+        score = applicant[attribute] / MAX_SCORE
         scores.append(score)
     total_score = sum(scores) * weight
     output_dict.append({"name": applicant_names[i], "score": round(total_score,2)})
