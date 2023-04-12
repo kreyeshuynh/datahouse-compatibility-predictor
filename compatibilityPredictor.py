@@ -1,3 +1,7 @@
+# Created By  : Kaianu Reyes-Huynh
+# Created Date: 4/12/2023
+# version ='1.0'
+
 import json #For reading and writing .json files
 
 #Open .json file
